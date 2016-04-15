@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+<div id="create_user">
+  <form action="/create_parent" method="post">
+    <input name="name" type="text" placeholder="Name">
+    <br>
+    <input name="email" type="text" placeholder="Email">
+    <br>
+    <input name="password" type="password" placeholder="Password">
+    <br>
+    <% for option in @options %>
+        <label for="<%= option %>"><%= option %></label>
+        <input name="notifications" id="<%= option %>" value="<%= option %>" type="radio">
+    <% end %>
+    <button type="submit">Skapa</button>
+  </form>
+</div>
+</body>
+</html>

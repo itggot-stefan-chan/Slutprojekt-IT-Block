@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Overseer</title>
+</head>
+<body>
+<% if @user %>
+  <span>Inloggad som <%= @user.name %></span>
+  <form action="/logout" method="post">
+    <button type="submit">Logga ut</button>
+  </form>
+<% else %>
+<div id="login">
+  <form action="/login" method="post">
+    <input name="username" type="text" placeholder="Name">
+    <input name="password" type="password" placeholder="Password">
+    <button type="submit">Logga in</button>
+  </form>
+</div>
+<% end %>
+<div id="Start">
+  <form action="/register" method="get">
+    <button type="submit">Kom Igång!</button>
+  </form>
+  <form action="/parentregister" method="get">
+    <button type="submit">Föräldrar Klickar Här!</button>
+  </form>
+</div>
+</body>
+</html>
