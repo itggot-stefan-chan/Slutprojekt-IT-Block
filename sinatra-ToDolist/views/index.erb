@@ -2,14 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Overseer</title>
+  <title>Home</title>
 </head>
 <body>
+<div id="Header">
+    <a href="/">Home</a></li>
+    <a href="/overview">Overview</a></li>
+</div>
 <% if @user %>
+<div id="user_logged_in">
   <span>Inloggad som <%= @user.name %></span>
   <form action="/logout" method="post">
     <button type="submit">Logga ut</button>
   </form>
+</div>
+<% elsif @parent %>
+<div id="parent_logged_in">
+    <span>Inloggad som <%= @parent.name %></span>
+    <form action="/logout" method="post">
+      <button type="submit">Logga ut</button>
+    </form>
+</div>
 <% else %>
 <div id="login">
   <form action="/login" method="post">
@@ -18,14 +31,14 @@
     <button type="submit">Logga in</button>
   </form>
 </div>
+    <div id="Start">
+      <form action="/register" method="get">
+        <button type="submit">Kom Igång!</button>
+      </form>
+      <form action="/parentregister" method="get">
+        <button type="submit">Föräldrar Klickar Här!</button>
+      </form>
+    </div>
 <% end %>
-<div id="Start">
-  <form action="/register" method="get">
-    <button type="submit">Kom Igång!</button>
-  </form>
-  <form action="/parentregister" method="get">
-    <button type="submit">Föräldrar Klickar Här!</button>
-  </form>
-</div>
 </body>
 </html>

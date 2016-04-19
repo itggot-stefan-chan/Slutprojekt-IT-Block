@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Overview</title>
+</head>
+<body>
+<div id="Header">
+  <a href="/">Home</a>
+  <a href="/overview">Overview</a>
+</div>
+<% if @user %>
+    <div id="user_logged_in">
+      <span>Inloggad som <%= @user.name %>
+      <form action="/logout" method="post">
+        <button type="submit">Logga ut</button>
+      </form>
+      </span>
+    </div>
+  <div id="create_event">
+    <form action="/create_event" method="get">
+      <button type="submit">Create Event</button>
+    </form>
+  </div>
+  <div id="create_schedule">
+    <form action="/create_schedule" method="get">
+      <button type="submit">Create Schedule</button>
+    </form>
+  </div>
+  <div id="events">
+    <% for event in @events %>
+      <h1><%= event.name %></h1>
+        <%= event.date %>
+        <%= event.time %>
+        <%= event.description %>
+    <% end %>
+  </div>
+<% elsif @parent %>
+    <div id="parent_logged_in">
+      <span>Inloggad som <%= @parent.name %>
+      <form action="/logout" method="post">
+        <button type="submit">Logga ut</button>
+      </form>
+      </span>
+    </div>
+  <div id="create_event" method="get">
+    <button type="submit">Create Event</button>
+  </div>
+<% else %>
+  <p><a href="/register">Register</a> an account if you want to access this page</p>
+<% end %>
+</body>
+</html>
