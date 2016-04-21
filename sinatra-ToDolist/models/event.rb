@@ -8,5 +8,6 @@ class Event
   property :description, String
 
   belongs_to :user
+  belongs_to :parent
 
 end

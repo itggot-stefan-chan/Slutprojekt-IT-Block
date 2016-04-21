@@ -27,11 +27,17 @@
       <button type="submit">Create Schedule</button>
     </form>
   </div>
+  <div id="parents">
+    <form action="/parents" method="get">
+      <button type="submit">Föräldrar</button>
+    </form>
+  </div>
   <div id="events">
     <% for event in @events %>
       <h1><%= event.name %></h1>
         <%= event.date %>
         <%= event.time %>
+        <br>
         <%= event.description %>
     <% end %>
   </div>
@@ -43,9 +49,25 @@
       </form>
       </span>
     </div>
-  <div id="create_event" method="get">
-    <button type="submit">Create Event</button>
+  <div id="create_event">
+    <form action="/create_event" method="get">
+      <button type="submit">Create Event</button>
+    </form>
   </div>
+  <div id="add_user">
+    <form action="add_user" method="post">
+      <button type="submit">Lägg till</button>
+    </form>
+  </div>
+      <div id="events">
+      <% for event in @events %>
+          <h1><%= event.name %></h1>
+          <%= event.date %>
+          <%= event.time %>
+          <br>
+          <%= event.description %>
+      <% end %>
+    </div>
 <% else %>
   <p><a href="/register">Register</a> an account if you want to access this page</p>
 <% end %>

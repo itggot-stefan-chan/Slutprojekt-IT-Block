@@ -16,7 +16,7 @@ class App < Sinatra::Base
     if user && user.password == params["password"]
       session[:user_id] = user.id
     elsif parent && parent.password == params["password"]
-      session[:user_id] = parent.id
+      session[:parent_id] = parent.id
     end
     redirect '/overview'
   end
@@ -32,7 +32,6 @@ class App < Sinatra::Base
   end
 
   get '/parent_register' do
-    @options = ['Ja', 'Nej']
     erb :parent_register
   end
 
@@ -49,8 +48,7 @@ class App < Sinatra::Base
     name = params[:name]
     email = params[:email]
     password = params[:password]
-    notification = params[:notifications]
-    Parent.create(name: name, email: email, password: password, notification: notification)
+    Parent.create(name: name, email: email, password: password)
     redirect '/'
   end
 
@@ -60,7 +58,7 @@ class App < Sinatra::Base
       @events = Event.all(user: @user)
     elsif session[:parent_id]
       @parent = Parent.get(session[:parent_id])
-      @parentevents = Event.all(user: @parent)
+      @events = Event.all(user: @parent)
     end
     erb :overview
   end
@@ -74,18 +72,36 @@ class App < Sinatra::Base
   end
 
   post '/create_event' do
-    @user = User.first(id: session[:user_id]).id
-    name = params['name']
-    date = params['date']
-    time = params['time']
-    description = params['description']
-    Event.create(name: name, date: date, time: time, description: description, user_id: @user)
-
-    #redirect '/overview'
+    @parentid = Relation.first(session[:user_id]).parent_id
+    @userid = Relation.all(session[:parent_id]).user_id
+    if session[:user_id]
+      @user = User.first(id: session[:user_id]).id
+      name = params[:name]
+      date = params[:date]
+      time = params[:time]
+      description = params[:description]
+      Event.create(name: name, date: date, time: time, description: description, user_id: @user, parent_id: @parentid)
+      redirect '/overview'
+    elsif session[:parent_id]
+      @parent = Parent.first(id: session[:parent_id]).id
+      name = params[:name]
+      date = params[:date]
+      time = params[:time]
+      description = params[:description]
+      Event.create(name: name, date: date, time: time, description: description, user_id: @userid, parent_id: @parent)
+      redirect '/overview'
+    end
   end
 
   post '/create_schedule' do
   end
 
+  get '/parents' do
+    erb :parents
+  end
+
+  get '/add_user' do
+    erb :add_user
+  end
 
 end

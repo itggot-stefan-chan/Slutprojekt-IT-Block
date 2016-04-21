@@ -8,4 +8,5 @@ class Parent
 
   has n, :relations
   has n, :users, through: :relations
+  has n, :events
 end
