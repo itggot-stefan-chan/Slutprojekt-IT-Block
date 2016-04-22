@@ -6,8 +6,9 @@
 </head>
 <body>
 <div id="Header">
-  <a href="/">Home</a></li>
-  <a href="/overview">Overview</a></li>
+  <a href="/">Home</a>
+  <a href="/overview">Overview</a>
+  <a href="/calender">Calender</a>
 </div>
   <div id="create_user">
     <form action="/create_user" method="post">
@@ -17,10 +18,12 @@
       <br>
       <input name="password" type="password" placeholder="Password">
       <br>
+      <p>Notification:
       <% for option in @options %>
         <label for="<%= option %>"><%= option %></label>
         <input name="notifications" id="<%= option %>" value="<%= option %>" type="radio">
       <% end %>
+      </p>
       <button type="submit">Skapa</button>
     </form>
   </div>

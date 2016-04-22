@@ -5,6 +5,11 @@
   <title>Create Event</title>
 </head>
 <body>
+<div id="Header">
+  <a href="/">Home</a>
+  <a href="/overview">Overview</a>
+  <a href="/calender">Calender</a>
+</div>
   <div id="create_event">
     <form action="/create_event" method="post">
       <input name="name" type="text" placeholder="Name">
@@ -14,6 +19,15 @@
       <input name="time" type="text" placeholder="Time">
       <br>
       <input name="description" type="text" placeholder="Description(Optional)">
+      <br>
+      <p>Keep it secret?
+      <% if @user %>
+      <% for option in @options %>
+          <label for="<%= option %>"><%= option %></label>
+          <input name="secret" id="<%= option %>" value="<%= option %>" type="radio">
+      <% end %>
+      <% end %>
+      </p>
       <button type="submit">Create Event</button>
     </form>
   </div>

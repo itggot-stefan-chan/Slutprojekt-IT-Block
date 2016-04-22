@@ -58,12 +58,14 @@ class App < Sinatra::Base
       @events = Event.all(user: @user)
     elsif session[:parent_id]
       @parent = Parent.get(session[:parent_id])
-      @events = Event.all(user: @parent)
+      @events = Event.all(parent: @parent, secret: 'Nej')
     end
     erb :overview
   end
 
   get '/create_event' do
+    @options = ['Ja', 'Nej']
+    @user = User.get(session[:user_id])
     erb :create_event
   end
 
@@ -72,23 +74,27 @@ class App < Sinatra::Base
   end
 
   post '/create_event' do
-    @parentid = Relation.first(session[:user_id]).parent_id
-    @userid = Relation.all(session[:parent_id]).user_id
+    @parent_name = Relation.first(session[:parent_name])
+    @user_name = Relation.first(session[:user_name])
     if session[:user_id]
       @user = User.first(id: session[:user_id]).id
+      creator = User.first(id: session[:user_id]).name
       name = params[:name]
       date = params[:date]
       time = params[:time]
       description = params[:description]
-      Event.create(name: name, date: date, time: time, description: description, user_id: @user, parent_id: @parentid)
+      secret = params[:secret]
+      Event.create(creator: creator, name: name, date: date, time: time, description: description, secret: secret, user_id: @user, parent_id: @parent_name.id)
       redirect '/overview'
     elsif session[:parent_id]
       @parent = Parent.first(id: session[:parent_id]).id
+      creator = Parent.first(session[:parent_name])
       name = params[:name]
       date = params[:date]
       time = params[:time]
       description = params[:description]
-      Event.create(name: name, date: date, time: time, description: description, user_id: @userid, parent_id: @parent)
+      secret = 'Nej'
+      Event.create(creator: creator, name: name, date: date, time: time, description: description, secret: secret, user_id: @user_name.id, parent_id: @parent)
       redirect '/overview'
     end
   end
@@ -102,6 +108,10 @@ class App < Sinatra::Base
 
   get '/add_user' do
     erb :add_user
+  end
+
+  get '/calender' do
+    erb :calender
   end
 
 end

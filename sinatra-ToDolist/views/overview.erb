@@ -8,6 +8,7 @@
 <div id="Header">
   <a href="/">Home</a>
   <a href="/overview">Overview</a>
+  <a href="/calender">Calender</a>
 </div>
 <% if @user %>
     <div id="user_logged_in">
@@ -39,6 +40,8 @@
         <%= event.time %>
         <br>
         <%= event.description %>
+        <br>
+        <%= event.creator %>
     <% end %>
   </div>
 <% elsif @parent %>
@@ -66,6 +69,8 @@
           <%= event.time %>
           <br>
           <%= event.description %>
+          <br>
+          <%= event.creator %>
       <% end %>
     </div>
 <% else %>
