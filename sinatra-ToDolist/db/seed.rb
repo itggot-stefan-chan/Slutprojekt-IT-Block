@@ -9,6 +9,7 @@ class Seeder
 
   def self.users
     User.create(name: 'Stefan Chan', email: 'stefan2846@hotmail.com', password: 123123, notification: 'Ja')
+    User.create(name: 'Zygor', email: 'stefan.chan@hotmail.com', password: 123123, notification: 'Nej')
   end
 
   def self.parents
@@ -21,6 +22,7 @@ class Seeder
 
   def self.relations
     Relation.create(user_name: 'Stefan Chan', user_id: 1, parent_name: 'Illnoid', parent_id: 1)
+    Relation.create(user_name: 'Zygor', user_id: 2, parent_name: 'Illnoid', parent_id: 1)
   end
 
 end

@@ -3,7 +3,7 @@ class Relation
 
   property :id, Serial
   property :user_name, String, required: true, unique: true
-  property :parent_name, String, required: true, unique: true
+  property :parent_name, String, required: true
 
   belongs_to :parent
   belongs_to :user

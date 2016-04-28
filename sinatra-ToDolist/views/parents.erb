@@ -10,14 +10,25 @@
   <a href="/overview">Overview</a>
   <a href="/calender">Calender</a>
 </div>
+<% if @user %>
+    <div id="user_logged_in">
+      <span>Inloggad som <%= @user.name %>
+        <form action="/logout" method="post">
+          <button type="submit">Logga ut</button>
+        </form>
+      </span>
+    </div>
+<% end %>
   <div id="Confirmation">
-    <p>Din konto är länkad med:</p>
+    <p>Your account is linked with:</p>
     <br>
     <ul>
-      <li></li>
+      <% for parent in @parents %>
+        <li><%= parent.parent_name %></li>
+      <% end %>
     </ul>
     <br>
-    <p>Väntande föräldrer-konton:</p>
+    <p>Pending parent accounts:</p>
     <br>
     <ul>
       <li></li>

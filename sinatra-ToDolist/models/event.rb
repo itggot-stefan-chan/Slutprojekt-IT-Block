@@ -2,7 +2,7 @@ class Event
   include DataMapper::Resource
 
   property :id, Serial
-  property :creator, String, required: true, unique: true
+  property :creator, String, required: true
   property :name, String, required: true
   property :date, String, required: true
   property :time, String, required: true

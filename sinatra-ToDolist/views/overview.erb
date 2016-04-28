@@ -41,7 +41,13 @@
         <br>
         <%= event.description %>
         <br>
+        Private: <%= event.secret %>
+        <br>
         <%= event.creator %>
+        <br>
+        <form action="/event/<%= event.id %>/delete" method="post">
+          <button class="remove" data-message-id="<%= event.id %>" type="submit">Remove</button>
+        </form>
     <% end %>
   </div>
 <% elsif @parent %>
@@ -58,8 +64,8 @@
     </form>
   </div>
   <div id="add_user">
-    <form action="add_user" method="post">
-      <button type="submit">Lägg till</button>
+    <form action="add_user" method="get">
+      <button type="submit">Add user</button>
     </form>
   </div>
       <div id="events">
@@ -71,6 +77,9 @@
           <%= event.description %>
           <br>
           <%= event.creator %>
+            <form action="/event/<%= event.id %>/delete" method="post">
+              <button class="remove" data-message-id="<%= event.id %>" type="submit">Remove</button>
+            </form>
       <% end %>
     </div>
 <% else %>

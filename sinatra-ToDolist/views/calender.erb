@@ -10,6 +10,15 @@
   <a href="/overview">Overview</a>
   <a href="/calender">Calender</a>
 </div>
+<% if @user %>
+    <div id="user_logged_in">
+      <span>Inloggad som <%= @user.name %>
+        <form action="/logout" method="post">
+          <button type="submit">Logga ut</button>
+        </form>
+      </span>
+    </div>
+<% end %>
   <h1>I am working on it...</h1>
 </body>
 </html>

@@ -20,14 +20,20 @@
       <br>
       <input name="description" type="text" placeholder="Description(Optional)">
       <br>
-      <p>Keep it secret?
       <% if @user %>
-      <% for option in @options %>
+      <p>Keep it secret?</p>
+        <% for option in @options %>
           <label for="<%= option %>"><%= option %></label>
           <input name="secret" id="<%= option %>" value="<%= option %>" type="radio">
+        <% end %>
+      <% elsif @parent %>
+        <select name="user">
+        <option value=" " disabled="disabled" selected="selected">Please select an user</option>
+        <% for relation in @relations %>
+              <option value="<%= relation.user_id %>" id="<%= relation.user_name %>"><%= relation.user_name %></option>
+        <% end %>
+        </select>
       <% end %>
-      <% end %>
-      </p>
       <button type="submit">Create Event</button>
     </form>
   </div>

@@ -10,8 +10,17 @@
   <a href="/overview">Overview</a>
   <a href="/calender">Calender</a>
 </div>
+<% if @parent %>
+<div id="parent_logged_in">
+      <span>Inloggad som <%= @parent.name %>
+        <form action="/logout" method="post">
+          <button type="submit">Logga ut</button>
+        </form>
+      </span>
+</div>
+<% end %>
   <div id="adding_user">
-    <form action="#" method="post">
+    <form action="adding_user " method="post">
       <input name="name" type="text" placeholder="Name of the user">
       <br>
       <input name="mail" type="text" placeholder="Email of the user">
