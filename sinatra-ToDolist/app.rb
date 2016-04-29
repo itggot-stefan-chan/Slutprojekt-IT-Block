@@ -56,10 +56,17 @@ class App < Sinatra::Base
     if session[:user_id]
       @user = User.get(session[:user_id])
       @events = Event.all(user: @user)
+      @schedule = Schedule.all(user: @user)
+      @week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+      @lessons = Lesson.all(schedule: @schedule)
       erb :overview
     elsif session[:parent_id]
       @parent = Parent.get(session[:parent_id])
       @events = Event.all(parent: @parent, secret: 'Nej')
+      @users = Relation.all(parent: @parent)
+      @user_schedule = Schedule.all(user: @users)
+      @week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+      @lessons = Lesson.all(schedule: @users)
       erb :overview
     end
   end

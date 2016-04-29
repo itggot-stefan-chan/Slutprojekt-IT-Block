@@ -5,6 +5,8 @@ class Seeder
     parents
     events
     relations
+    schedules
+    lessons
   end
 
   def self.users
@@ -18,11 +20,22 @@ class Seeder
 
   def self.events
     Event.create(creator: 'Illnoid', name: 'Gymma', date: '04-19', time: '15:00', description: 'Dem Gainz', secret: 'Nej', user_id: 1, parent_id: 1)
+    Event.create(creator: 'Illnoid', name: 'Do the dishes', date: '05-28', time: '19:00', description: 'Do it now', secret: 'Nej', user_id: 2, parent_id: 1)
   end
 
   def self.relations
     Relation.create(user_name: 'Stefan Chan', user_id: 1, parent_name: 'Illnoid', parent_id: 1)
     Relation.create(user_name: 'Zygor', user_id: 2, parent_name: 'Illnoid', parent_id: 1)
+  end
+
+  def self.schedules
+    Schedule.create(creator: 'Stefan Chan',user_id: 1)
+    Schedule.create(creator: 'Zygor',user_id: 2)
+  end
+
+  def self.lessons
+    Lesson.create(name: 'English', day: 'Monday', time: '17:00', schedule_id: 1)
+    Lesson.create(name: 'Mathematics', day: 'Wednesday', time: '13:00', schedule_id: 2)
   end
 
 end

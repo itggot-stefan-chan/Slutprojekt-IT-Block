@@ -10,5 +10,6 @@ class User
   has n, :relations
   has n, :parents, through: :relations
   has n, :events
+  has 1, :schedule
 
 end
