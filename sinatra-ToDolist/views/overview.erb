@@ -62,6 +62,9 @@
             |<%= lesson.name %>|
             <br>
             |<%= lesson.time %>|
+                <form action="/lesson/<%= lesson.id %>/delete" method="post">
+                  <button class="remove" data-message-id="<%= lesson.id %>" type="submit">Remove</button>
+                </form>
           <% end %>
         <% end %>
       </div>
@@ -101,7 +104,7 @@
       <% end %>
     </div>
     <div id="schedule">
-      <h1>Schedule</h1>
+      <h1>User Schedules</h1>
         <% for day in @week %>
             <div class="day">
               <h3>|<%= day %>|</h3>
@@ -110,6 +113,8 @@
                       |<%= lesson.name %>|
                       <br>
                       |<%= lesson.time %>|
+                      <br>
+                      |<%= lesson.creator %>|
                   <% end %>
               <% end %>
             </div>

@@ -12,6 +12,18 @@
 </div>
   <div id="create_schedule">
     <form action="/create_schedule" method="post">
+      <input name="name" type="text" placeholder="Name">
+      <br>
+      <select name="day">
+        <option value=" " disabled="disabled" selected="selected">Please select a day</option>
+        <% for day in @week %>
+          <option value="<%= day %>" id="<%= day %>"><%= day %></option>
+        <% end %>
+      </select>
+      <br>
+      <input name="time" type="text" placeholder="Time">
+      <br>
+      <button type="submit">Create Lesson</button>
     </form>
   </div>
 </body>

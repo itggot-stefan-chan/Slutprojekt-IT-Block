@@ -34,8 +34,8 @@ class Seeder
   end
 
   def self.lessons
-    Lesson.create(name: 'English', day: 'Monday', time: '17:00', schedule_id: 1)
-    Lesson.create(name: 'Mathematics', day: 'Wednesday', time: '13:00', schedule_id: 2)
+    Lesson.create(name: 'English', day: 'Monday', time: '17:00', creator: 'Stefan Chan', schedule_id: 1)
+    Lesson.create(name: 'Mathematics', day: 'Wednesday', time: '13:00', creator: 'Illnoid', schedule_id: 2)
   end
 
 end

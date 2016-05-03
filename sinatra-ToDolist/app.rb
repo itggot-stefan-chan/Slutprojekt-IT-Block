@@ -64,9 +64,9 @@ class App < Sinatra::Base
       @parent = Parent.get(session[:parent_id])
       @events = Event.all(parent: @parent, secret: 'Nej')
       @users = Relation.all(parent: @parent)
-      @user_schedule = Schedule.all(user: @users)
+      @user_schedule = Schedule.all(user: @users.user)
       @week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
-      @lessons = Lesson.all(schedule: @users)
+      @lessons = Lesson.all(schedule: @user_schedule)
       erb :overview
     end
   end
@@ -86,6 +86,7 @@ class App < Sinatra::Base
   get '/create_schedule' do
     if session[:user_id]
       @user = User.get(session[:user_id])
+      @week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
       erb :create_schedule
     end
   end
@@ -126,7 +127,26 @@ class App < Sinatra::Base
     end
   end
 
+  post '/lesson/:id/delete' do |lesson_id|
+    lesson = Lesson.get(lesson_id)
+    if lesson
+      lesson.destroy
+      redirect back
+    else
+      status 404
+    end
+  end
+
   post '/create_schedule' do
+    @user = session[:user_id]
+    schedule = Schedule.first(user_id: @user)
+    @schedule_id = schedule.id
+    name = params[:name]
+    day = params[:day]
+    time = params[:time]
+    creator = User.first(session[:user_name]).name
+    Lesson.create(name: name, day: day, time: time, creator: creator, schedule_id: @schedule_id)
+    redirect '/overview'
   end
 
   get '/parents' do
