@@ -10,6 +10,6 @@ class Event
   property :secret, String, required: true
 
   belongs_to :user
-  belongs_to :parent
+  belongs_to :parent, required: false
 
 end

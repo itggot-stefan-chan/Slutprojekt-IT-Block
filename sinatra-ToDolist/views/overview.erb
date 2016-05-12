@@ -26,7 +26,7 @@
   </div>
   <div id="create_schedule">
     <form action="/create_schedule" method="get">
-      <button type="submit">Create Schedule</button>
+      <button type="submit">Create/Edit Schedule</button>
     </form>
   </div>
   <div id="parents">
@@ -43,8 +43,10 @@
         <br>
         <%= event.description %>
         <br>
+        <% if event.creator == Parent.first(name: event.creator) %>
         Private: <%= event.secret %>
         <br>
+        <% end %>
         <%= event.creator %>
         <br>
         <form action="/event/<%= event.id %>/delete" method="post">
@@ -52,6 +54,7 @@
         </form>
     <% end %>
   </div>
+  <% if @schedule %>
   <div id="schedule">
     <h1>Schedule</h1>
     <% for day in @week %>
@@ -70,6 +73,7 @@
       </div>
     <% end %>
   </div>
+  <% end %>
 <% elsif @parent %>
     <div id="parent_logged_in">
       <span>Inloggad som <%= @parent.name %>

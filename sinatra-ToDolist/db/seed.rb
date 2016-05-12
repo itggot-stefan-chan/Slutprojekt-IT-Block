@@ -12,6 +12,7 @@ class Seeder
   def self.users
     User.create(name: 'Stefan Chan', email: 'stefan2846@hotmail.com', password: 123123, notification: 'Ja')
     User.create(name: 'Zygor', email: 'stefan.chan@hotmail.com', password: 123123, notification: 'Nej')
+    User.create(name: 'daero', email: 'aq.shadow@live.com', password: 123123, notification: 'Ja')
   end
 
   def self.parents

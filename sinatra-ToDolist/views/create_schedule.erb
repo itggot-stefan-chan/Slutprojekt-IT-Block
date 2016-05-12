@@ -5,26 +5,35 @@
   <title>Document</title>
 </head>
 <body>
-<div id="Header">
-  <a href="/">Home</a>
-  <a href="/overview">Overview</a>
-  <a href="/calender">Calender</a>
-</div>
-  <div id="create_schedule">
-    <form action="/create_schedule" method="post">
-      <input name="name" type="text" placeholder="Name">
-      <br>
-      <select name="day">
-        <option value=" " disabled="disabled" selected="selected">Please select a day</option>
-        <% for day in @week %>
-          <option value="<%= day %>" id="<%= day %>"><%= day %></option>
-        <% end %>
-      </select>
-      <br>
-      <input name="time" type="text" placeholder="Time">
-      <br>
-      <button type="submit">Create Lesson</button>
-    </form>
+  <div id="Header">
+    <a href="/">Home</a>
+    <a href="/overview">Overview</a>
+    <a href="/calender">Calender</a>
   </div>
+  <% if @schedule %>
+    <div id="create_lesson">
+      <h3>Create Lessons</h3>
+      <form action="/create_lesson" method="post">
+        <input name="name" type="text" placeholder="Name">
+        <br>
+        <select name="day">
+          <option value=" " disabled="disabled" selected="selected">Please select a day</option>
+          <% for day in @week %>
+            <option value="<%= day %>" id="<%= day %>"><%= day %></option>
+          <% end %>
+        </select>
+        <br>
+        <input name="time" type="text" placeholder="Time">
+        <br>
+        <button type="submit">Create Lesson</button>
+      </form>
+    </div>
+  <% else %>
+    <div id="create_schedule">
+      <form action="/create_schedule" method="post">
+        <button type="submit">Create Schedule</button>
+      </form>
+    </div>
+  <% end %>
 </body>
 </html>

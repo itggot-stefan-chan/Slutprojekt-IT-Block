@@ -31,7 +31,12 @@
     <p>Pending parent accounts:</p>
     <br>
     <ul>
-      <li></li>
+      <% for request in @requests %>
+        <li><%= request.parent_name %></li>
+        <form action="/adding_parent" method="post">
+          <button type="submit">Accept</button>
+        </form>
+      <% end %>
     </ul>
   </div>
 </body>
