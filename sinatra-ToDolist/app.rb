@@ -93,7 +93,7 @@ class App < Sinatra::Base
   end
 
   post '/create_event' do
-    if session[:user_id] && Relation.get(user_id: session[:user_id]) != nil
+    if session[:user_id] && Relation.first(user_id: session[:user_id]) != nil
       @parent_id = Relation.first(user_id: session[:user_id]).parent_id
       @user = User.get(session[:user_id]).id
       creator = User.get(session[:user_id]).name
