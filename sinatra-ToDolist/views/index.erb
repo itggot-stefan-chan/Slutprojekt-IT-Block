@@ -3,43 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <title>Home</title>
+  <link rel="stylesheet" type="text/css" href="/css/layout.css">
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
 </head>
 <body>
 <div id="Header">
-  <a href="/">Home</a>
-  <a href="/overview">Overview</a>
-  <a href="/calender">Calender</a>
-</div>
-<% if @user %>
-<div id="user_logged_in">
-  <span>Inloggad som <%= @user.name %></span>
-  <form action="/logout" method="post">
-    <button type="submit">Logga ut</button>
-  </form>
-</div>
-<% elsif @parent %>
-<div id="parent_logged_in">
-    <span>Inloggad som <%= @parent.name %></span>
-    <form action="/logout" method="post">
-      <button type="submit">Logga ut</button>
+  <div id="menu">
+    <a class="pure-button" href="/">Home</a>
+    <a class="pure-button" href="/overview">Overview</a>
+    <a class="pure-button" href="/calender">Calender</a>
+  </div>
+  <% if @user %>
+      <div id="logged_in">
+        <span>Inloggad som <%= @user.name %></span>
+        <form action="/logout" method="post">
+          <button class="pure-button" type="submit">Logga ut</button>
+        </form>
+      </div>
+  <% elsif @parent %>
+      <div id="logged_in">
+        <span>Inloggad som <%= @parent.name %></span>
+        <form action="/logout" method="post">
+          <button class="pure-button" type="submit">Logga ut</button>
+        </form>
+      </div>
+  <% else %>
+  <div id="login">
+    <form action="/login" method="post">
+      <input name="username" type="text" placeholder="Name">
+      <input name="password" type="password" placeholder="Password">
+      <button class="pure-button" type="submit">Logga in</button>
     </form>
+  </div>
 </div>
-<% else %>
-<div id="login">
-  <form action="/login" method="post">
-    <input name="username" type="text" placeholder="Name">
-    <input name="password" type="password" placeholder="Password">
-    <button type="submit">Logga in</button>
+<div id="Start">
+  <form id="Start" action="/register" method="get">
+    <button class="start pure-button" type="submit">Kom Igång!</button>
+  </form>
+  <form id="Start" action="/parent_register" method="get">
+    <button class="start pure-button" type="submit">Föräldrar Klickar Här!</button>
   </form>
 </div>
-    <div id="Start">
-      <form action="/register" method="get">
-        <button type="submit">Kom Igång!</button>
-      </form>
-      <form action="/parent_register" method="get">
-        <button type="submit">Föräldrar Klickar Här!</button>
-      </form>
-    </div>
 <% end %>
 </body>
 </html>

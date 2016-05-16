@@ -1,15 +1,35 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+  <link rel="stylesheet" type="text/css" href="/css/layout.css">
   <meta charset="UTF-8">
   <title>Create Event</title>
 </head>
 <body>
 <div id="Header">
-  <a href="/">Home</a>
-  <a href="/overview">Overview</a>
-  <a href="/calender">Calender</a>
+  <div id="menu">
+    <a class="pure-button" href="/">Home</a>
+    <a class="pure-button" href="/overview">Overview</a>
+    <a class="pure-button" href="/calender">Calender</a>
+  </div>
+  <% if @user %>
+      <div id="logged_in">
+        <span>Inloggad som <%= @user.name %></span>
+        <form action="/logout" method="post">
+          <button class="pure-button" type="submit">Logga ut</button>
+        </form>
+      </div>
+  <% elsif @parent %>
+      <div id="logged_in">
+        <span>Inloggad som <%= @parent.name %></span>
+        <form action="/logout" method="post">
+          <button class="pure-button" type="submit">Logga ut</button>
+        </form>
+      </div>
+  <% end %>
 </div>
+<div id="container">
   <div id="create_event">
     <form action="/create_event" method="post">
       <input name="name" type="text" placeholder="Name">
@@ -34,8 +54,9 @@
         <% end %>
         </select>
       <% end %>
-      <button type="submit">Create Event</button>
+      <button class="start pure-button" type="submit">Create Event</button>
     </form>
   </div>
+</div>
 </body>
 </html>

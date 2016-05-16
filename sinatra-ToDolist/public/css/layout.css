@@ -1,4 +1,164 @@
-div.day {
+body {
+    background-color: whitesmoke;
+    width: 100%;
+    height: 100%;
+}
+
+form {
     float: left;
-    width: 120px;
+}
+
+form#menu {
+    float: left;
+    margin-left: 5px;
+}
+
+form#Start {
+    margin-left: 5px;
+}
+
+form#Confirmation {
+    margin-right: 5px;
+}
+
+span {
+    margin-left: 5px;
+    height: 36px;
+}
+
+li {
+    height: 40px;
+}
+
+button.start.pure-button {
+    color: white;
+    background-color: #8C8F84;
+    border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0,  0.2);
+}
+
+
+div#container {
+    background-color: whitesmoke;
+    margin-left: 5%;
+    margin-right: 5%;
+    height: 100%;
+}
+
+div#menu {
+    float: left;
+    width: 280px;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    margin-right: auto;
+    margin-left: 20%;
+}
+
+div#Header {
+    margin-top: -1%;
+    margin-left: -1%;
+    background: darkcyan;
+    width: 102%;
+    height: 6em;
+}
+
+div#login {
+    float: left;
+    margin-right: 10px;
+    margin-left: 15%;
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+div#logged_in {
+    float: left;
+    margin-left: 15%;
+    margin-right: 10px;
+    padding-bottom: 2em;
+    padding-top: 2em;
+}
+
+div#Start {
+    margin-left: auto;
+    margin-right: auto;
+    width: 308px;
+    height: 72px;
+}
+
+div#user_menu {
+    width: 430px;
+    height: 25px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+div#parent_menu {
+    width: 232px;
+    height: 36px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+div#events {
+    width: 100%;
+    height: auto;
+    float: left;
+}
+
+div#event {
+    float: left;
+    margin-right: 20px;
+}
+
+
+div#schedule {
+    float: left;
+}
+
+div#day {
+    float: left;
+    margin-right: 20px;
+}
+
+div#create_user {
+    width: 176px;
+    height: 166px;
+    margin-top: 2em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div#create_parent {
+    width: 176px;
+    height: 166px;
+    margin-top: 2em;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+div#create_event {
+    width: 192px;
+    height: 212px;
+    margin-top: 2em;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+div#adding_user {
+    width: 147px;
+    height: 48px;
+}
+
+div#create_lesson {
+    width: 176px;
+    height: 112px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 2em;
+}
+
+div#calender {
+    margin-left: auto;
+    margin-top: 2em;
+    margin-right: auto;
 }

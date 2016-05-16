@@ -1,15 +1,27 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" type="text/css" href="/css/layout.css">
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
   <meta charset="UTF-8">
   <title>Registration</title>
 </head>
 <body>
 <div id="Header">
-  <a href="/">Home</a>
-  <a href="/overview">Overview</a>
-  <a href="/calender">Calender</a>
+  <div id="menu">
+    <a class="pure-button" href="/">Home</a>
+    <a class="pure-button" href="/overview">Overview</a>
+    <a class="pure-button" href="/calender">Calender</a>
+  </div>
+  <div id="login">
+    <form action="/login" method="post">
+      <input name="username" type="text" placeholder="Name">
+      <input name="password" type="password" placeholder="Password">
+      <button class="pure-button" type="submit">Logga in</button>
+    </form>
+  </div>
 </div>
+<div id="container">
   <div id="create_user">
     <form action="/create_user" method="post">
       <input name="name" type="text" placeholder="Name">
@@ -24,8 +36,9 @@
         <input name="notifications" id="<%= option %>" value="<%= option %>" type="radio">
       <% end %>
       </p>
-      <button type="submit">Skapa</button>
+      <button class="start pure-button" type="submit">Skapa</button>
     </form>
   </div>
+</div>
 </body>
 </html>

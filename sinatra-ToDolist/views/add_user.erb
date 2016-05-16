@@ -1,30 +1,36 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" type="text/css" href="/css/layout.css">
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
   <meta charset="UTF-8">
   <title>Document</title>
 </head>
 <body>
 <div id="Header">
-  <a href="/">Home</a>
-  <a href="/overview">Overview</a>
-  <a href="/calender">Calender</a>
-</div>
+  <div id="menu">
+    <a class="pure-button" href="/">Home</a>
+    <a class="pure-button" href="/overview">Overview</a>
+    <a class="pure-button" href="/calender">Calender</a>
+  </div>
 <% if @parent %>
-<div id="parent_logged_in">
+<div id="logged_in">
       <span>Inloggad som <%= @parent.name %>
         <form action="/logout" method="post">
-          <button type="submit">Logga ut</button>
+          <button class="pure-button" type="submit">Logga ut</button>
         </form>
       </span>
 </div>
 <% end %>
+</div>
+<div id="container">
   <div id="adding_user">
     <form action="adding_user " method="post">
       <input name="name" type="text" placeholder="Name of the user">
       <br>
-      <button type="submit">Add</button>
+      <button class="start pure-button" type="submit">Add</button>
     </form>
   </div>
+</div>
 </body>
 </html>

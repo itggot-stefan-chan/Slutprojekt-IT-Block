@@ -1,26 +1,41 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" type="text/css" href="/css/layout.css">
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
   <meta charset="UTF-8">
   <title>Document</title>
 </head>
 <body>
 <div id="Header">
-  <a href="/">Home</a>
-  <a href="/overview">Overview</a>
-  <a href="/calender">Calender</a>
-</div>
+  <div id="menu">
+  <a class="pure-button" href="/">Home</a>
+  <a class="pure-button" href="/overview">Overview</a>
+  <a class="pure-button" href="/calender">Calender</a>
+  </div>
 <% if @user %>
-    <div id="user_logged_in">
+    <div id="logged_in">
       <span>Inloggad som <%= @user.name %>
         <form action="/logout" method="post">
-          <button type="submit">Logga ut</button>
+          <button class="pure-button" type="submit">Logga ut</button>
         </form>
       </span>
     </div>
 <% end %>
-<div id="calender">
-  <iframe src="https://calendar.google.com/calendar/embed?src=stefan.chan%40itggot.se&ctz=Europe/Stockholm" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+<% if @parent %>
+    <div id="logged_in">
+      <span>Inloggad som <%= @parent.name %>
+        <form action="/logout" method="post">
+          <button class="pure-button" type="submit">Logga ut</button>
+        </form>
+      </span>
+    </div>
+<% end %>
+</div>
+<div id="container">
+  <div id="calender">
+    <iframe src="https://calendar.google.com/calendar/embed?src=stefan.chan%40itggot.se&ctz=Europe/Stockholm" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+  </div>
 </div>
 </body>
 </html>
