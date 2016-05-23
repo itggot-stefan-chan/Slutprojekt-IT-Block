@@ -20,8 +20,8 @@ class Seeder
   end
 
   def self.events
-    Event.create(creator: 'Illnoid', name: 'Gymma', date: '04-19', time: '15:00', description: 'Dem Gainz', secret: 'Nej', user_id: 1, parent_id: 1)
-    Event.create(creator: 'Illnoid', name: 'Do the dishes', date: '05-28', time: '19:00', description: 'Do it now', secret: 'Nej', user_id: 2, parent_id: 1)
+    Event.create(creator: 'Illnoid', name: 'Gymma', date: '2016-04-19', time: '15:00', description: 'Dem Gainz', secret: 'Nej', user_id: 1, parent_id: 1)
+    Event.create(creator: 'Illnoid', name: 'Do the dishes', date: '2016-05-28', time: '19:00', description: 'Do it now', secret: 'Nej', user_id: 2, parent_id: 1)
   end
 
   def self.relations
@@ -36,7 +36,7 @@ class Seeder
 
   def self.lessons
     Lesson.create(name: 'English', day: 'Monday', time: '17:00', creator: 'Stefan Chan', schedule_id: 1)
-    Lesson.create(name: 'Mathematics', day: 'Wednesday', time: '13:00', creator: 'Illnoid', schedule_id: 2)
+    Lesson.create(name: 'Mathematics', day: 'Wednesday', time: '13:00', creator: 'Zygor', schedule_id: 2)
   end
 
 end

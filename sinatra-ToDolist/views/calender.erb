@@ -1,10 +1,12 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" type="text/css" href="/css/calendar.css" media="screen, print, handheld">
+  <script type="text/javascript" src="/js/calendar.js"></script>
   <link rel="stylesheet" type="text/css" href="/css/layout.css">
   <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
   <meta charset="UTF-8">
-  <title>Document</title>
+  <title>Overseer</title>
 </head>
 <body>
 <div id="Header">
@@ -15,26 +17,59 @@
   </div>
 <% if @user %>
     <div id="logged_in">
-      <span>Inloggad som <%= @user.name %>
-        <form action="/logout" method="post">
-          <button class="pure-button" type="submit">Logga ut</button>
-        </form>
-      </span>
+      <span id="header"><p>Inloggad som <%= @user.name %></p></span>
+      <form id="logout" action="/logout" method="post">
+        <button class="pure-button" type="submit">Logga ut</button>
+      </form>
     </div>
 <% end %>
 <% if @parent %>
     <div id="logged_in">
-      <span>Inloggad som <%= @parent.name %>
-        <form action="/logout" method="post">
+      <span id="header"><p>Inloggad som <%= @parent.name %></p></span>
+        <form id="logout" action="/logout" method="post">
           <button class="pure-button" type="submit">Logga ut</button>
         </form>
-      </span>
     </div>
 <% end %>
 </div>
 <div id="container">
-  <div id="calender">
-    <iframe src="https://calendar.google.com/calendar/embed?src=stefan.chan%40itggot.se&ctz=Europe/Stockholm" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+  <div id="calendar">
+    <table id="calendar" align="center" border="10" cellpadding="2">
+      <center>
+        <h1><%= @date.strftime('%B') %></h1>
+      </center>
+      <tr>
+        <th id="calendar"><%= @date.strftime('%A') %></th>
+        <% for i in @days %>
+            <th id="calendar"><%= @date.next_day(i).strftime('%A') %></th>
+        <% end %>
+      </tr>
+        <% next_month = @date.next_month %>
+        <% until @date >= next_month %>
+          <tr>
+            <td id="calendar">
+              <%= @date.mday %>
+              <% for event in @events %>
+                <% if event.date == @date %>
+                  |<%= event.name %>|
+                <% end %>
+              <% end %>
+            </td>
+            <% for i in @days %>
+              <td id="calendar">
+                <%= @date.next_day(i).mday %>
+                <% for event in @events %>
+                    <% if event.date == @date.next_day(i) %>
+                        <br>
+                        |<%= event.name %>|
+                    <% end %>
+                <% end %>
+              </td>
+            <% end %>
+          </tr>
+          <% @date = @date.next_day(7) %>
+        <% end %>
+    </table>
   </div>
 </div>
 </body>

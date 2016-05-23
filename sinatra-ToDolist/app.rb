@@ -56,17 +56,61 @@ class App < Sinatra::Base
     if session[:user_id]
       @user = User.get(session[:user_id])
       @events = Event.all(user: @user)
+      sort_event = []
+      for event in @events
+        sort_event << {:date => event.date, :id => event.id}
+      end
+      sort_event.sort_by! do |item|
+        item[:date]
+      end
+      @sorted_event = []
+      for item in sort_event do
+        @sorted_event << Event.get(item[:id])
+      end
       @schedule = Schedule.get(session[:user_id])
       @week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
       @lessons = Lesson.all(schedule: @schedule)
+      sort_lesson = []
+      for lesson in @lessons
+        sort_lesson << {:time => lesson.time, :id => lesson.id}
+      end
+      sort_lesson.sort_by! do |item|
+        item[:time]
+      end
+      @sorted_lesson = []
+      for item in sort_lesson do
+        @sorted_lesson << Lesson.get(item[:id])
+      end
       erb :overview
     elsif session[:parent_id]
       @parent = Parent.get(session[:parent_id])
-      @events = Event.all(parent: @parent, secret: 'Nej')
+      events = Event.all(parent: @parent, secret: 'Nej')
+      sort_event = []
+      for event in events
+        sort_event << {:date => event.date, :id => event.id}
+      end
+      sort_event.sort_by! do |item|
+        item[:date]
+      end
+      @sorted_event = []
+      for item in sort_event do
+        @sorted_event << Event.get(item[:id])
+      end
       @users = Relation.all(parent: @parent)
       user_schedule = Schedule.all(user: @users.user)
       @week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
       @lessons = Lesson.all(schedule: user_schedule)
+      sort_lesson = []
+      for lesson in @lessons
+        sort_lesson << {:time => lesson.time, :id => lesson.id}
+      end
+      sort_lesson.sort_by! do |item|
+        item[:time]
+      end
+      @sorted_lesson = []
+      for item in sort_lesson do
+        @sorted_lesson << Lesson.get(item[:id])
+      end
       erb :overview
     else
       redirect '/'
@@ -87,6 +131,7 @@ class App < Sinatra::Base
     end
   end
 
+
   get '/create_schedule' do
     if session[:user_id]
       @user = User.get(session[:user_id])
@@ -104,7 +149,7 @@ class App < Sinatra::Base
       @user = User.get(session[:user_id]).id
       creator = User.get(session[:user_id]).name
       name = params[:name]
-      date = params[:date]
+      date = Date.parse(params[:date])
       time = params[:time]
       description = params[:description]
       secret = params[:secret]
@@ -114,7 +159,7 @@ class App < Sinatra::Base
       user = User.get(session[:user_id]).id
       creator = User.get(session[:user_id]).name
       name = params[:name]
-      date = params[:date]
+      date = Date.parse(params[:date])
       time = params[:time]
       description = params[:description]
       secret = params[:secret]
@@ -125,7 +170,7 @@ class App < Sinatra::Base
       user_id = params[:user]
       creator = Parent.get(session[:parent_id]).name
       name = params[:name]
-      date = params[:date]
+      date = Date.parse(params[:date])
       time = params[:time]
       description = params[:description]
       secret = 'Nej'
@@ -224,9 +269,15 @@ class App < Sinatra::Base
   get '/calender' do
     if session[:user_id]
       @user = User.get(session[:user_id])
+      @date = Date.new(Date.today.year,Date.today.month,1)
+      @days = [1,2,3,4,5,6]
+      @events = Event.all(user: @user)
       erb :calender
     elsif session[:parent_id]
       @parent = Parent.get(session[:parent_id])
+      @date = Date.new(Date.today.year,Date.today.month,1)
+      @days = [2,3,4,5,6]
+      @events = Event.all(parent: @parent, secret: 'Nej')
       erb :calender
     else
       redirect '/'

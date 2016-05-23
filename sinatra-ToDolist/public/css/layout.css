@@ -4,8 +4,8 @@ body {
     height: 100%;
 }
 
-form {
-    float: left;
+form#login {
+    float: right;
 }
 
 form#menu {
@@ -14,14 +14,21 @@ form#menu {
 }
 
 form#Start {
+    float: left;
     margin-left: 5px;
 }
 
 form#Confirmation {
-    margin-right: 5px;
+    float: left;
+}
+
+form#logout {
+    float: left;
+    margin-left: 5px;
 }
 
 span {
+    float: left;
     margin-left: 5px;
     height: 36px;
 }
@@ -34,9 +41,9 @@ button.start.pure-button {
     color: white;
     background-color: #8C8F84;
     border-radius: 4px;
+    border: 1px solid black;
     text-shadow: 0 1px 1px rgba(0, 0, 0,  0.2);
 }
-
 
 div#container {
     background-color: whitesmoke;
@@ -81,8 +88,8 @@ div#logged_in {
 div#Start {
     margin-left: auto;
     margin-right: auto;
-    width: 308px;
-    height: 72px;
+    width: 318px;
+    height: 76px;
 }
 
 div#user_menu {
@@ -93,8 +100,8 @@ div#user_menu {
 }
 
 div#parent_menu {
-    width: 232px;
-    height: 36px;
+    width: 242px;
+    height: 38px;
     margin-right: auto;
     margin-left: auto;
 }
@@ -108,8 +115,14 @@ div#events {
 div#event {
     float: left;
     margin-right: 20px;
+    margin-left: auto;
+    border-radius: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    background-color: darkcyan;
+    border: 1px solid black;
 }
-
 
 div#schedule {
     float: left;
@@ -121,44 +134,102 @@ div#day {
 }
 
 div#create_user {
+    border-radius: 4px;
+    border: 1px solid black;
+    background-color: white;
+    padding: 1em;
     width: 176px;
-    height: 166px;
+    height: 266px;
     margin-top: 2em;
     margin-left: auto;
     margin-right: auto;
 }
 
 div#create_parent {
+    border-radius: 4px;
+    border: 1px solid black;
+    background-color: white;
+    padding: 1em;
     width: 176px;
-    height: 166px;
+    height: 206px;
     margin-top: 2em;
     margin-right: auto;
     margin-left: auto;
 }
 
 div#create_event {
+    border-radius: 4px;
+    border: 1px solid black;
+    background-color: white;
+    padding-left: 1em;
+    padding-right: 1em;
     width: 192px;
-    height: 212px;
+    height: 292px;
     margin-top: 2em;
     margin-right: auto;
     margin-left: auto;
 }
 
 div#adding_user {
+    background-color: white;
+    border-radius: 4px;
+    border: 1px solid black;
+    padding-left: 3em;
+    padding-bottom: 2em;
+    padding-top: 1em;
+    padding-right: 1em;
+    margin-top: 1em;
+    margin-left: auto;
+    margin-right: auto;
     width: 147px;
     height: 48px;
 }
 
 div#create_lesson {
+    border-radius: 4px;
+    border: 1px solid black;
+    background-color: white;
+    padding-left: 1em;
+    padding-right: 1em;
     width: 176px;
-    height: 112px;
+    height: 192px;
     margin-right: auto;
     margin-left: auto;
     margin-top: 2em;
 }
 
-div#calender {
+div#calendar {
+    width: 100%;
     margin-left: auto;
     margin-top: 2em;
     margin-right: auto;
+}
+
+div#lesson {
+    margin-bottom: 10px;
+    background-color: darkcyan;
+    border-radius: 4px;
+    border: 1px solid black;
+}
+
+table#calendar {
+    border:4px solid black;
+    padding:1px;
+    background-color:white;
+    width:100%;
+    margin:auto;
+    height:100%;
+}
+
+th#calendar {
+    border: 4px solid black;
+    background-color:#ffffff;
+    height: 36px;
+}
+
+td#calendar {
+    border:1px solid black;
+    background-color:#ffffff;
+    text-align:center;
+    height: 36px;
 }

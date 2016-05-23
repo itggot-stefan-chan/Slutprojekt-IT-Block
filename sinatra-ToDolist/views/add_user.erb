@@ -4,7 +4,7 @@
   <link rel="stylesheet" type="text/css" href="/css/layout.css">
   <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
   <meta charset="UTF-8">
-  <title>Document</title>
+  <title>Overseer</title>
 </head>
 <body>
 <div id="Header">
@@ -15,11 +15,10 @@
   </div>
 <% if @parent %>
 <div id="logged_in">
-      <span>Inloggad som <%= @parent.name %>
-        <form action="/logout" method="post">
-          <button class="pure-button" type="submit">Logga ut</button>
-        </form>
-      </span>
+  <span><p>Inloggad som <%= @parent.name %></p></span>
+    <form id="logout" action="/logout" method="post">
+      <button class="pure-button" type="submit">Logga ut</button>
+    </form>
 </div>
 <% end %>
 </div>

@@ -4,7 +4,7 @@
   <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
   <link rel="stylesheet" type="text/css" href="/css/layout.css">
   <meta charset="UTF-8">
-  <title>Create Event</title>
+  <title>Overseer</title>
 </head>
 <body>
 <div id="Header">
@@ -15,15 +15,15 @@
   </div>
   <% if @user %>
       <div id="logged_in">
-        <span>Inloggad som <%= @user.name %></span>
-        <form action="/logout" method="post">
+        <span id="header"><p>Inloggad som <%= @user.name %></p></span>
+        <form id="logout" action="/logout" method="post">
           <button class="pure-button" type="submit">Logga ut</button>
         </form>
       </div>
   <% elsif @parent %>
       <div id="logged_in">
-        <span>Inloggad som <%= @parent.name %></span>
-        <form action="/logout" method="post">
+        <span id="header"><p>Inloggad som <%= @parent.name %></p></span>
+        <form id="logout" action="/logout" method="post">
           <button class="pure-button" type="submit">Logga ut</button>
         </form>
       </div>
@@ -31,12 +31,13 @@
 </div>
 <div id="container">
   <div id="create_event">
+    <h3>Create an event</h3>
     <form action="/create_event" method="post">
       <input name="name" type="text" placeholder="Name">
       <br>
-      <input name="date" type="text" placeholder="Date">
+      <input name="date" type="text" placeholder="Date(yyyy-mm-dd)">
       <br>
-      <input name="time" type="text" placeholder="Time">
+      <input name="time" type="text" placeholder="Time(hh-mm)">
       <br>
       <input name="description" type="text" placeholder="Description(Optional)">
       <br>
@@ -53,6 +54,8 @@
               <option value="<%= relation.user_id %>" id="<%= relation.user_name %>"><%= relation.user_name %></option>
         <% end %>
         </select>
+        <br>
+        <br>
       <% end %>
       <button class="start pure-button" type="submit">Create Event</button>
     </form>

@@ -4,7 +4,7 @@
   <link rel="stylesheet" type="text/css" href="/css/layout.css">
   <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
   <meta charset="UTF-8">
-  <title>Föräldrar</title>
+  <title>Overseer</title>
 </head>
 <body>
 <div id="Header">
@@ -15,36 +15,33 @@
   </div>
 <% if @user %>
     <div id="logged_in">
-      <span>Inloggad som <%= @user.name %>
-        <form action="/logout" method="post">
+      <span id="header"><p>Inloggad som <%= @user.name %></p></span>
+        <form id="logout" action="/logout" method="post">
           <button class="pure-button" type="submit">Logga ut</button>
         </form>
-      </span>
     </div>
 <% end %>
 </div>
 <div id="container">
-  <p>Your account is linked with:</p>
+  <h3>Your account is linked with:</h3>
   <div id="Confirmation">
       <% for relation in @relations %>
         <li>
-          <%= relation.parent_name %>
+         <p><%= relation.parent_name %></p>
         <form id="Confirmation" action="/relation/<%= relation.id %>/delete" method="post">
           <button class="start pure-button" data-message-id="<%= relation.id %>" type="submit">Remove</button>
         </form>
         </li>
       <% end %>
     <br>
-    <p>Pending parent accounts:</p>
+    <h3>Pending accounts:</h3>
     <br>
-    <ul>
       <% for request in @requests %>
         <li><%= request.parent_name %></li>
-        <form action="/adding_parent" method="post">
+        <form id="Confirmation" action="/adding_parent" method="post">
           <button class="start pure-button" type="submit">Accept</button>
         </form>
       <% end %>
-    </ul>
   </div>
 </div>
 </body>
