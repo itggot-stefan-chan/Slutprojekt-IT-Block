@@ -1,35 +1,4 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Overseer</title>
-  <link rel="stylesheet" type="text/css" href="/css/layout.css">
-  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
-</head>
-<body>
-<div id="Header">
-  <div id="menu">
-    <a class="pure-button" href="/">Home</a>
-    <a class="pure-button" href="/overview">Overview</a>
-    <a class="pure-button" href="/calender">Calender</a>
-  </div>
-  <% if @user %>
-      <div id="logged_in">
-        <span id="header"><p>Inloggad som <%= @user.name %></p></span>
-        <form id="logout" action="/logout" method="post">
-          <button class="pure-button" type="submit">Logga ut</button>
-        </form>
-      </div>
-  <% elsif @parent %>
-    <div id="logged_in">
-      <span id="header"><p>Inloggad som <%= @parent.name %></p></span>
-       <form id="logout" action="/logout" method="post">
-         <button class="pure-button" type="submit">Logga ut</button>
-       </form>
-    </div>
-  <% end %>
-</div>
-<div id="container">
+
 <% if @user %>
   <div id="user_menu">
     <form id="menu" action="/create_event" method="get">
@@ -39,36 +8,39 @@
       <button class="start pure-button" type="submit">Create/Edit Schedule</button>
     </form>
     <form id="menu" action="/parents" method="get">
-      <button class="start pure-button" type="submit">Föräldrar</button>
+      <button class="start pure-button" type="submit">Parents</button>
     </form>
   </div>
   <% if @sorted_event %>
   <div id="events">
-    <h1 id="events">Upcoming Events</h1>
+      <h1 id="events">Upcoming Events</h1>
+    <div id="center_events">
     <% for event in @sorted_event %>
-      <div id="event">
-      <h3><%= event.name %></h3>
-        <%= event.date %>
-        <%= event.time %>
-        <br>
-        <%= event.description %>
-        <br>
-        <% if event.creator == Parent.first(name: event.creator) %>
-        Private: <%= event.secret %>
-        <br>
-        <% end %>
-        <%= event.creator %>
-        <br>
-        <form action="/event/<%= event.id %>/delete" method="post">
-          <button class="start pure-button" data-message-id="<%= event.id %>" type="submit">Remove</button>
-        </form>
-        </div>
+      <div class="event">
+        <h3><%= event.name %></h3>
+          <%= event.date %>
+          <%= event.time %>
+          <br>
+          <%= event.description %>
+          <br>
+          <% if event.creator == Parent.first(name: event.creator) %>
+          Private: <%= event.secret %>
+          <br>
+          <% end %>
+          <%= event.creator %>
+          <br>
+          <form action="/event/<%= event.id %>/delete" method="post">
+            <button class="start pure-button" data-message-id="<%= event.id %>" type="submit">Remove</button>
+          </form>
+      </div>
     <% end %>
+    </div>
   </div>
   <% end %>
   <% if @schedule %>
   <div id="schedule">
-    <h1>Schedule</h1>
+    <h1 id="events">Schedule</h1>
+    <div id="week">
     <% for day in @week %>
       <div id="day">
         <h3>|<%= day %>|</h3>
@@ -87,6 +59,7 @@
         <% end %>
       </div>
     <% end %>
+    </div>
   </div>
   <% end %>
 <% elsif @parent %>
@@ -100,9 +73,10 @@
   </div>
     <% if @sorted_event %>
       <div id="events">
-        <h1 id="events">Upcoming Events</h1>
+       <h1 id="events">Upcoming Events</h1>
+        <div id="center_events">
       <% for event in @sorted_event %>
-          <div id="event">
+          <div class="event">
           <h3><%= event.name %></h3>
           <%= event.date %>
           <%= event.time %>
@@ -116,10 +90,12 @@
             </form>
           </div>
       <% end %>
+        </div>
     </div>
     <% end %>
     <div id="schedule">
-      <h1>User Schedules</h1>
+      <h1 id="events">User Schedules</h1>
+      <div id="week">
         <% for day in @week %>
             <div id="day">
               <h3>|<%= day %>|</h3>
@@ -136,10 +112,6 @@
               <% end %>
             </div>
         <% end %>
+      </div>
     </div>
-<% else %>
-  <p><a href="/register">Register</a> an account if you want to access this page</p>
 <% end %>
-</div>
-</body>
-</html>

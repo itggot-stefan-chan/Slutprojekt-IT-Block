@@ -1,48 +1,20 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <link rel="stylesheet" type="text/css" href="/css/layout.css">
-  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
-  <meta charset="UTF-8">
-  <title>Overseer</title>
-</head>
-<body>
-<div id="Header">
-  <div id="menu">
-    <a class="pure-button" href="/">Home</a>
-    <a class="pure-button" href="/overview">Overview</a>
-    <a class="pure-button" href="/calender">Calender</a>
-  </div>
-<% if @user %>
-    <div id="logged_in">
-      <span id="header"><p>Inloggad som <%= @user.name %></p></span>
-        <form id="logout" action="/logout" method="post">
-          <button class="pure-button" type="submit">Logga ut</button>
-        </form>
-    </div>
-<% end %>
-</div>
-<div id="container">
-  <h3>Your account is linked with:</h3>
-  <div id="Confirmation">
+
+  <div id="delete_parent">
+    <h3>Your account is linked with:</h3>
       <% for relation in @relations %>
-        <li>
-         <p><%= relation.parent_name %></p>
-        <form id="Confirmation" action="/relation/<%= relation.id %>/delete" method="post">
+        <%= relation.parent_name %>
+        <form id="delete_parent" action="/relation/<%= relation.id %>/delete" method="post">
           <button class="start pure-button" data-message-id="<%= relation.id %>" type="submit">Remove</button>
         </form>
-        </li>
       <% end %>
-    <br>
+  </div>
+  <div id="Confirmation">
     <h3>Pending accounts:</h3>
     <br>
       <% for request in @requests %>
-        <li><%= request.parent_name %></li>
+        <%= request.parent_name %></li>
         <form id="Confirmation" action="/adding_parent" method="post">
           <button class="start pure-button" type="submit">Accept</button>
         </form>
       <% end %>
   </div>
-</div>
-</body>
-</html>

@@ -1,35 +1,4 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
-  <link rel="stylesheet" type="text/css" href="/css/layout.css">
-  <meta charset="UTF-8">
-  <title>Overseer</title>
-</head>
-<body>
-<div id="Header">
-  <div id="menu">
-    <a class="pure-button" href="/">Home</a>
-    <a class="pure-button" href="/overview">Overview</a>
-    <a class="pure-button" href="/calender">Calender</a>
-  </div>
-  <% if @user %>
-      <div id="logged_in">
-        <span id="header"><p>Inloggad som <%= @user.name %></p></span>
-        <form id="logout" action="/logout" method="post">
-          <button class="pure-button" type="submit">Logga ut</button>
-        </form>
-      </div>
-  <% elsif @parent %>
-      <div id="logged_in">
-        <span id="header"><p>Inloggad som <%= @parent.name %></p></span>
-        <form id="logout" action="/logout" method="post">
-          <button class="pure-button" type="submit">Logga ut</button>
-        </form>
-      </div>
-  <% end %>
-</div>
-<div id="container">
+
   <div id="create_event">
     <h3>Create an event</h3>
     <form action="/create_event" method="post">
@@ -60,6 +29,3 @@
       <button class="start pure-button" type="submit">Create Event</button>
     </form>
   </div>
-</div>
-</body>
-</html>

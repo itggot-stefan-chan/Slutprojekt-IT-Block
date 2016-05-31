@@ -18,13 +18,10 @@ form#Start {
     margin-left: 5px;
 }
 
-form#Confirmation {
-    float: left;
-}
-
 form#logout {
     float: left;
-    margin-left: 5px;
+    margin-left: 10px;
+    margin-top: 15px;
 }
 
 span {
@@ -57,8 +54,7 @@ div#menu {
     width: 280px;
     padding-top: 2em;
     padding-bottom: 2em;
-    margin-right: auto;
-    margin-left: 20%;
+    margin-left: 10%;
 }
 
 div#Header {
@@ -70,22 +66,23 @@ div#Header {
 }
 
 div#login {
-    float: left;
-    margin-right: 10px;
-    margin-left: 15%;
+    float: right;
+    margin-right: 10%;
+    margin-left: 10px;
     padding-top: 2em;
     padding-bottom: 2em;
 }
 
 div#logged_in {
-    float: left;
-    margin-left: 15%;
-    margin-right: 10px;
+    float: right;
+    margin-left: auto;
+    margin-right: 10%;
     padding-bottom: 2em;
-    padding-top: 2em;
+    padding-top: 1em;
 }
 
 div#Start {
+    margin-top: 1em;
     margin-left: auto;
     margin-right: auto;
     width: 318px;
@@ -93,15 +90,19 @@ div#Start {
 }
 
 div#user_menu {
-    width: 430px;
-    height: 25px;
+    width: auto;
+    height: auto;
+    margin-top: 1em;
     margin-right: auto;
     margin-left: auto;
+    display: flex;
+    justify-content: center;
 }
 
 div#parent_menu {
     width: 242px;
     height: 38px;
+    margin-top: 1em;
     margin-right: auto;
     margin-left: auto;
 }
@@ -112,10 +113,10 @@ div#events {
     float: left;
 }
 
-div#event {
+div.event {
     float: left;
-    margin-right: 20px;
-    margin-left: auto;
+    width: auto;
+    margin-right: 10px;
     border-radius: 4px;
     padding-left: 10px;
     padding-right: 10px;
@@ -124,13 +125,38 @@ div#event {
     border: 1px solid black;
 }
 
+div#center_events {
+    float: left;
+    margin-right: auto;
+    margin-left: auto;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 div#schedule {
     float: left;
+    height: 100%;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-top: 1em;
 }
 
 div#day {
     float: left;
     margin-right: 20px;
+}
+
+div#week {
+    float: left;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 div#create_user {
@@ -162,7 +188,7 @@ div#create_event {
     border: 1px solid black;
     background-color: white;
     padding-left: 1em;
-    padding-right: 1em;
+    padding-right: 0.5em;
     width: 192px;
     height: 292px;
     margin-top: 2em;
@@ -174,15 +200,14 @@ div#adding_user {
     background-color: white;
     border-radius: 4px;
     border: 1px solid black;
-    padding-left: 3em;
-    padding-bottom: 2em;
-    padding-top: 1em;
-    padding-right: 1em;
     margin-top: 1em;
     margin-left: auto;
     margin-right: auto;
-    width: 147px;
-    height: 48px;
+    padding-left: 2em;
+    padding-bottom: 2em;
+    padding-right: 2em;
+    width: 176px;
+    height: 135px;
 }
 
 div#create_lesson {
@@ -198,6 +223,20 @@ div#create_lesson {
     margin-top: 2em;
 }
 
+div#create_schedule {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2em;
+    border-radius: 4px;
+    border: 1px solid black;
+    background-color: white;
+    height: 100px;
+    width: 161px;
+    padding-bottom: 2em;
+    padding-right: 2em;
+    padding-left: 2em;
+}
+
 div#calendar {
     width: 100%;
     margin-left: auto;
@@ -210,6 +249,22 @@ div#lesson {
     background-color: darkcyan;
     border-radius: 4px;
     border: 1px solid black;
+}
+
+div#Confirmation {
+    padding-top: 1em;
+}
+
+div#logo {
+    margin-top: 2em;
+    height: auto;
+    width: auto;
+    display: flex;
+    justify-content: center;
+}
+
+img#logo {
+    border-radius: 4px;
 }
 
 table#calendar {
@@ -232,4 +287,25 @@ td#calendar {
     background-color:#ffffff;
     text-align:center;
     height: 36px;
+}
+
+h1#events {
+    text-align: center;
+}
+
+h1#calendar {
+    text-align: center;
+}
+
+h3#calendar {
+    color: darkcyan;
+}
+
+h3#header {
+    float: left;
+}
+
+#wrapper {
+    background: white;
+    display: none;
 }

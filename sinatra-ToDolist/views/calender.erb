@@ -1,43 +1,6 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <link rel="stylesheet" type="text/css" href="/css/calendar.css" media="screen, print, handheld">
-  <script type="text/javascript" src="/js/calendar.js"></script>
-  <link rel="stylesheet" type="text/css" href="/css/layout.css">
-  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
-  <meta charset="UTF-8">
-  <title>Overseer</title>
-</head>
-<body>
-<div id="Header">
-  <div id="menu">
-  <a class="pure-button" href="/">Home</a>
-  <a class="pure-button" href="/overview">Overview</a>
-  <a class="pure-button" href="/calender">Calender</a>
-  </div>
-<% if @user %>
-    <div id="logged_in">
-      <span id="header"><p>Inloggad som <%= @user.name %></p></span>
-      <form id="logout" action="/logout" method="post">
-        <button class="pure-button" type="submit">Logga ut</button>
-      </form>
-    </div>
-<% end %>
-<% if @parent %>
-    <div id="logged_in">
-      <span id="header"><p>Inloggad som <%= @parent.name %></p></span>
-        <form id="logout" action="/logout" method="post">
-          <button class="pure-button" type="submit">Logga ut</button>
-        </form>
-    </div>
-<% end %>
-</div>
-<div id="container">
-  <div id="calendar">
+<div id="calendar">
     <table id="calendar" align="center" border="10" cellpadding="2">
-      <center>
-        <h1><%= @date.strftime('%B') %></h1>
-      </center>
+        <h1 id="calendar"><%= @date.strftime('%B') %></h1>
       <tr>
         <th id="calendar"><%= @date.strftime('%A') %></th>
         <% for i in @days %>
@@ -49,21 +12,48 @@
           <tr>
             <td id="calendar">
               <%= @date.mday %>
-              <% for event in @events %>
-                <% if event.date == @date %>
-                  |<%= event.name %>|
-                <% end %>
+              <% for date in @event_dates %>
+                <% if date == @date.to_s %>
+                    <button id="button">Collapse/Expand</button>
+                    <div id="wrapper" class="open">
+                    <ul id="list">
+                      <% for event in @events %>
+                          <% if event.date == @date %>
+                      <li>
+                        |<%= event.name %>|, <%= event.time %>
+                        <% if @parent %>
+                          <%= event.creator %>
+                        <% end %>
+                      </li>
+                          <% end %>
+                      <% end %>
+                    </ul>
+                    </div>
+                  <% end %>
               <% end %>
             </td>
             <% for i in @days %>
               <td id="calendar">
                 <%= @date.next_day(i).mday %>
-                <% for event in @events %>
-                    <% if event.date == @date.next_day(i) %>
-                        <br>
-                        |<%= event.name %>|
+                <% for date in @event_dates %>
+                  <% if date == @date.next_day(i).to_s %>
+                        <button id="button">Collapse/Expand</button>
+                        <div id="wrapper" class="open">
+                          <ul id="list">
+                            <% for event in @events %>
+                                <% if event.date == @date.next_day(i) %>
+                                  <li>
+                                    |<%= event.name %>|, <%= event.time %>
+                                    <% if @parent %>
+                                        <%= event.creator %>
+                                    <% end %>
+                                  </li>
+                                <% end %>
+                            <% end %>
+                          </ul>
+                        </div>
                     <% end %>
-                <% end %>
+                  <% end %>
               </td>
             <% end %>
           </tr>
@@ -71,6 +61,3 @@
         <% end %>
     </table>
   </div>
-</div>
-</body>
-</html>

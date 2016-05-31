@@ -1,49 +1,12 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Overseer</title>
-  <link rel="stylesheet" type="text/css" href="/css/layout.css">
-  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
-</head>
-<body>
-<div id="Header">
-  <div id="menu">
-    <a class="pure-button" href="/">Home</a>
-    <a class="pure-button" href="/overview">Overview</a>
-    <a class="pure-button" href="/calender">Calender</a>
-  </div>
-  <% if @user %>
-      <div id="logged_in">
-        <span id="header"><p>Inloggad som <%= @user.name %></p></span>
-        <form id="logout" action="/logout" method="post">
-          <button class="pure-button" type="submit">Logga ut</button>
-        </form>
-      </div>
-  <% elsif @parent %>
-      <div id="logged_in">
-        <span id="header"><p>Inloggad som <%= @parent.name %></p></span>
-        <form id="logout" action="/logout" method="post">
-          <button class="pure-button" type="submit">Logga ut</button>
-        </form>
-      </div>
-  <% else %>
-  <div id="login">
-    <form id="login" action="/login" method="post">
-      <input name="username" type="text" placeholder="Name">
-      <input name="password" type="password" placeholder="Password">
-      <button class="pure-button" type="submit">Logga in</button>
-    </form>
-  </div>
-</div>
+
 <div id="Start">
   <form id="Start" action="/register" method="get">
-    <button class="start pure-button" type="submit">Kom Igång!</button>
+    <button class="start pure-button" type="submit">Get Started!</button>
   </form>
   <form id="Start" action="/parent_register" method="get">
-    <button class="start pure-button" type="submit">Föräldrar Klickar Här!</button>
+    <button class="start pure-button" type="submit">Parents Click Here!</button>
   </form>
 </div>
-<% end %>
-</body>
-</html>
+<div id="logo">
+  <img src="/img/Logo.jpg">
+</div>

@@ -272,12 +272,22 @@ class App < Sinatra::Base
       @date = Date.new(Date.today.year,Date.today.month,1)
       @days = [1,2,3,4,5,6]
       @events = Event.all(user: @user)
+      @event_dates = []
+      for event in @events
+        @event_dates << event.date.to_s
+      end
+      @event_dates = @event_dates.uniq
       erb :calender
     elsif session[:parent_id]
       @parent = Parent.get(session[:parent_id])
       @date = Date.new(Date.today.year,Date.today.month,1)
-      @days = [2,3,4,5,6]
+      @days = [1,2,3,4,5,6]
       @events = Event.all(parent: @parent, secret: 'Nej')
+      @event_dates = []
+      for event in @events
+        @event_dates << event.date.to_s
+      end
+      @event_dates = @event_dates.uniq
       erb :calender
     else
       redirect '/'

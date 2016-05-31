@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Overseer</title>
+  <script src="/js/jquery-2.2.0.min.js"></script>
+  <script src="/js/expand_minimize.js"></script>
+  <link rel="stylesheet" type="text/css" href="/css/layout.css">
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+</head>
+<body>
+<div id="Header">
+  <div id="menu">
+    <a class="pure-button" href="/">Home</a>
+    <a class="pure-button" href="/overview">Overview</a>
+    <a class="pure-button" href="/calender">Calender</a>
+  </div>
+  <% if @user %>
+      <div id="logged_in">
+        <h3 id="header">Welcome, <%= @user.name %></h3>
+        <form id="logout" action="/logout" method="post">
+          <button class="pure-button" type="submit">Logout</button>
+        </form>
+      </div>
+  <% elsif @parent %>
+      <div id="logged_in">
+        <h3 id="header">Welcome, <%= @parent.name %></h3>
+        <form id="logout" action="/logout" method="post">
+          <button class="pure-button" type="submit">Logout</button>
+        </form>
+      </div>
+  <% else %>
+      <div id="login">
+        <form id="login" action="/login" method="post">
+          <input name="username" type="text" placeholder="Name">
+          <input name="password" type="password" placeholder="Password">
+          <button class="pure-button" type="submit">Login</button>
+        </form>
+      </div>
+  <% end %>
+</div>
+<div id="container">
+<%= yield %>
+</div>
+</body>
+</html>

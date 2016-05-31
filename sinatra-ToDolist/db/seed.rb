@@ -22,6 +22,10 @@ class Seeder
   def self.events
     Event.create(creator: 'Illnoid', name: 'Gymma', date: '2016-04-19', time: '15:00', description: 'Dem Gainz', secret: 'Nej', user_id: 1, parent_id: 1)
     Event.create(creator: 'Illnoid', name: 'Do the dishes', date: '2016-05-28', time: '19:00', description: 'Do it now', secret: 'Nej', user_id: 2, parent_id: 1)
+    Event.create(creator: 'Illnoid', name: 'Do the dishes2', date: '2016-05-28', time: '19:00', description: 'Do it now', secret: 'Nej', user_id: 2, parent_id: 1)
+    Event.create(creator: 'Illnoid', name: 'Do the dishes3', date: '2016-05-28', time: '19:00', description: 'Do it now', secret: 'Nej', user_id: 2, parent_id: 1)
+    Event.create(creator: 'Illnoid', name: 'Do the dishes4', date: '2016-05-28', time: '19:00', description: 'Do it now', secret: 'Nej', user_id: 2, parent_id: 1)
+    Event.create(creator: 'Illnoid', name: 'Do the dishes5', date: '2016-05-28', time: '19:00', description: 'Do it now', secret: 'Nej', user_id: 2, parent_id: 1)
   end
 
   def self.relations
