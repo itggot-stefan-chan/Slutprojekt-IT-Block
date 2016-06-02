@@ -1,3 +1,4 @@
+
 <div id="calendar">
     <table id="calendar" align="center" border="10" cellpadding="2">
         <h1 id="calendar"><%= @date.strftime('%B') %></h1>
@@ -14,8 +15,8 @@
               <%= @date.mday %>
               <% for date in @event_dates %>
                 <% if date == @date.to_s %>
-                    <button id="button">Collapse/Expand</button>
-                    <div id="wrapper" class="open">
+                    <button class="open pure-button">Expand/Collapse</button>
+                    <div class="content">
                     <ul id="list">
                       <% for event in @events %>
                           <% if event.date == @date %>
@@ -37,8 +38,8 @@
                 <%= @date.next_day(i).mday %>
                 <% for date in @event_dates %>
                   <% if date == @date.next_day(i).to_s %>
-                        <button id="button">Collapse/Expand</button>
-                        <div id="wrapper" class="open">
+                        <button class="open pure-button">Expand/Collapse</button>
+                        <div class="content">
                           <ul id="list">
                             <% for event in @events %>
                                 <% if event.date == @date.next_day(i) %>
@@ -60,4 +61,4 @@
           <% @date = @date.next_day(7) %>
         <% end %>
     </table>
-  </div>
+</div>

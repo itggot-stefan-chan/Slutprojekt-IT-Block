@@ -305,7 +305,10 @@ h3#header {
     float: left;
 }
 
-#wrapper {
-    background: white;
+.content {
     display: none;
+}
+
+@media (max-width: 320px) {
+    
 }
