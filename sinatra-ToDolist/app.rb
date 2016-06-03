@@ -27,7 +27,6 @@ class App < Sinatra::Base
   end
 
   get '/register' do
-    @options = ['Ja', 'Nej']
     erb :register
   end
 
@@ -39,8 +38,7 @@ class App < Sinatra::Base
     name = params[:name]
     email = params[:email]
     password = params[:password]
-    notification = params[:notifications]
-    User.create(name: name, email: email, password: password, notification: notification)
+    User.create(name: name, email: email, password: password)
     redirect '/'
   end
 
@@ -84,7 +82,7 @@ class App < Sinatra::Base
       erb :overview
     elsif session[:parent_id]
       @parent = Parent.get(session[:parent_id])
-      events = Event.all(parent: @parent, secret: 'Nej')
+      events = Event.all(parent: @parent, secret: 'No')
       sort_event = []
       for event in events
         sort_event << {:date => event.date, :id => event.id}
@@ -119,7 +117,7 @@ class App < Sinatra::Base
 
   get '/create_event' do
     if session[:user_id]
-      @options = ['Ja', 'Nej']
+      @options = ['Yes', 'No']
       @user = User.get(session[:user_id])
       erb :create_event
     elsif session[:parent_id]
@@ -173,7 +171,7 @@ class App < Sinatra::Base
       date = Date.parse(params[:date])
       time = params[:time]
       description = params[:description]
-      secret = 'Nej'
+      secret = 'Yes'
       Event.create(creator: creator, name: name, date: date, time: time, description: description, secret: secret, user_id: user_id, parent_id: @parent)
       redirect '/overview'
     end

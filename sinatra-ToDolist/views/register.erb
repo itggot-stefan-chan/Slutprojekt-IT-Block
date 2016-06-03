@@ -8,12 +8,6 @@
       <br>
       <input name="password" type="password" placeholder="Password">
       <br>
-      <p>Notification:
-      <% for option in @options %>
-        <label for="<%= option %>"><%= option %></label>
-        <input name="notifications" id="<%= option %>" value="<%= option %>" type="radio">
-      <% end %>
-      </p>
       <button class="start pure-button" type="submit">Create</button>
     </form>
   </div>
