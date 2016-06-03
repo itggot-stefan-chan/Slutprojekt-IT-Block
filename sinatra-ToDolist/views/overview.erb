@@ -42,11 +42,11 @@
     <h1 id="events">Schedule</h1>
     <div id="week">
     <% for day in @week %>
-      <div id="day">
-        <h3>|<%= day %>|</h3>
+      <div class="day">
+        <h3 class="schedule">|<%= day %>|</h3>
         <% for lesson in @sorted_lesson %>
           <% if lesson.day == day %>
-            <div id="lesson">
+            <div class="lesson">
             |<%= lesson.name %>|
             <br>
             |<%= lesson.time %>|
@@ -97,11 +97,11 @@
       <h1 id="events">User Schedules</h1>
       <div id="week">
         <% for day in @week %>
-            <div id="day">
-              <h3>|<%= day %>|</h3>
+            <div class="day">
+              <h3 class="schedule">|<%= day %>|</h3>
               <% for lesson in @sorted_lesson %>
                   <% if lesson.day == day %>
-                      <div id="lesson">
+                      <div class="lesson">
                       |<%= lesson.name %>|
                       <br>
                       |<%= lesson.time %>|

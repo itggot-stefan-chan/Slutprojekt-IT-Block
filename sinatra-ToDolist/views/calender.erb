@@ -38,17 +38,14 @@
                 <%= @date.next_day(i).mday %>
                 <% for date in @event_dates %>
                   <% if date == @date.next_day(i).to_s %>
-                        <button class="open pure-button">Expand/Collapse</button>
+                        <button class="open pure-button">Expand</button>
                         <div class="content">
-                          <ul id="list">
                             <% for event in @events %>
                                 <% if event.date == @date.next_day(i) %>
-                                  <li>
                                     |<%= event.name %>|, <%= event.time %>
                                     <% if @parent %>
                                         <%= event.creator %>
                                     <% end %>
-                                  </li>
                                 <% end %>
                             <% end %>
                           </ul>

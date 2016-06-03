@@ -144,7 +144,7 @@ div#schedule {
     padding-top: 1em;
 }
 
-div#day {
+div.day {
     float: left;
     margin-right: 20px;
 }
@@ -175,7 +175,10 @@ div#create_parent {
     border-radius: 4px;
     border: 1px solid black;
     background-color: white;
-    padding: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-bottom: 2em;
+    padding-top: 1em;
     width: 176px;
     height: 206px;
     margin-top: 2em;
@@ -244,7 +247,7 @@ div#calendar {
     margin-right: auto;
 }
 
-div#lesson {
+div.lesson {
     margin-bottom: 10px;
     background-color: darkcyan;
     border-radius: 4px;
@@ -309,6 +312,118 @@ h3#header {
     display: none;
 }
 
-@media (max-width: 320px) {
-    
+@media (max-width: 640px) {
+
+    div#menu {
+        margin-left: auto;
+        margin-right: auto;
+        float: none;
+    }
+
+    div#logo {
+        display: none;
+        margin-top: 0;
+    }
+
+    div#start {
+        display: flex;
+        justify-content: center;
+    }
+
+    div#login {
+        border: 1px solid black;
+        margin-left: 5%;
+        margin-right: 5%;
+        width: 80%;
+        margin-bottom: 1em;
+        padding-left: 2em;
+        padding-right: 2em;
+    }
+
+    div#create_user {
+        margin-top: 10em;
+        margin-bottom: 2em;
+    }
+
+    div#create_parent {
+        margin-top: 10em;
+        margin-bottom: 2em;
+    }
+
+    div#logged_in {
+        border: 1px solid black;
+        width: 100%;
+        margin-right: 0;
+        padding-left: 2em;
+        margin-bottom: 1em;
+        display: flex;
+        justify-content: center;
+    }
+
+    div#user_menu {
+        display: block;
+        margin-left: 12%;
+    }
+
+    div#center_events {
+        display: block;
+    }
+
+    div.event {
+        margin-right: auto;
+        margin-left: auto;
+        width: 50%;
+        float: none;
+    }
+
+    div#week {
+        display: block;
+    }
+
+    div.day {
+        float: none;
+        margin-right: 0;
+    }
+
+    div.lesson {
+        display: flex;
+        justify-content: center;
+        float: none;
+    }
+
+    div#create_event {
+        margin-top: 8em;
+        margin-bottom: 2em;
+        width: 302px;
+        justify-content: center;
+    }
+
+    div#adding_user {
+        margin-top: 8em;
+        margin-bottom: 2em;
+        width: 266px;
+    }
+
+    div#create_lesson {
+        margin-top: 8em;
+        margin-bottom: 2em;
+        width: 276px;
+    }
+
+    div#create_schedule {
+        margin-top: 8em;
+        margin-bottom: 2em;
+        width: 261px;
+    }
+
+    h3.schedule {
+        width: 100%;
+    }
+
+    form#login {
+        float: none;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
 }
