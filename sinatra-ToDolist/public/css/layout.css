@@ -117,6 +117,7 @@ div.event {
     float: left;
     width: auto;
     margin-right: 10px;
+    margin-bottom: 10px;
     border-radius: 4px;
     padding-left: 10px;
     padding-right: 10px;
@@ -131,8 +132,6 @@ div#center_events {
     margin-left: auto;
     height: 100%;
     width: 100%;
-    display: flex;
-    justify-content: center;
 }
 
 div#schedule {
@@ -363,10 +362,6 @@ h3#header {
     div#user_menu {
         display: block;
         margin-left: 12%;
-    }
-
-    div#center_events {
-        display: block;
     }
 
     div.event {
